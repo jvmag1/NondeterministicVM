@@ -13,9 +13,9 @@ Tech
 
 NondeterministicVM uses a number of technologies:
 
-* C# 2.0 - the language this VM is wriiten in
-* NUnit - unit testing framework
-* WinForms - GUI for demo application
+* [C# 2.0](http://www.itu.dk/people/sestoft/ecma/Ecma-334.pdf) - the language this VM is wriiten in
+* [NUnit](http://www.nunit.org/) - unit testing framework
+* [WinForms](http://en.wikipedia.org/wiki/Windows_Forms) - GUI for demo application
 
 Demo GUI interface
 --------------
