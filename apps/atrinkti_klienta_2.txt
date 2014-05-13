@@ -1,0 +1,126 @@
+##### Code section #####
+
+.code 0x0
+# Print "Atrinkti_klienta_2. " and new line
+LoadByMem r0 0x2000 100%
+PrintString r0 100%
+LoadByMem r0 0x2004 100%
+PrintString r0 100%
+LoadByMem r0 0x2008 100%
+PrintString r0 100%
+LoadByMem r0 0x200C 100%
+PrintString r0 100%
+LoadByMem r0 0x2010 100%
+PrintString r0 100%
+LoadByMem r0 0x2200 100%
+PrintString r0 100%
+
+# Jump to client selection code
+LoadByMem r1 0x1000 100%
+Jump r1 100%
+
+# Client selection code
+.code 0x100
+# Print "Bandomas nr:"
+LoadByMem r0 0x2100 100%
+PrintString r0 100%
+LoadByMem r0 0x2104 100%
+PrintString r0 100%
+LoadByMem r0 0x2108 100%
+PrintString r0 100%
+
+# Load constants 1234, 3766, 4950 and 10
+LoadByMem r0 0x1014 100%
+LoadByMem r1 0x1018 100%
+LoadByMem r2 0x101C 100%
+LoadByMem r3 0x1020 100%
+
+# Select random array element: r4 = ((1234 +~ 3766) - 4950) / 10
+RandomizedAdd r4 r0 r1 100%
+Subtract r4 r4 r2 100%
+Divide r4 r4 r3 100%
+
+# Print r4 and new line
+PrintNumber r4 100%
+LoadByMem r0 0x2200 100%
+PrintString r0 100%
+
+# Get array element address: r5 = 0x150 + (r4 * 4)
+LoadByMem r5 0x1040 100%
+LoadByMem r6 0x1044 100%
+Multiply r6 r4 r6 100%
+Add r5 r5 r6 100%
+
+# Load array element: r6 = MEM[r5]
+LoadByReg r6 r5 100%
+
+# if (r6 == 1) { print "Atspeta" } else { try_again }
+LoadByMem r7 0x1048 100%
+Compare r6 r7 100%
+LoadByMem r8 0x1004 100%
+JumpIfEqual r8 100%
+LoadByMem r1 0x1000 100%
+Jump r1 100%
+
+# Print "Atspeta"
+.code 0x900
+LoadByMem r0 0x2300 100%
+PrintString r0 100%
+LoadByMem r0 0x2304 100%
+PrintString r0 100%
+
+##### Data section #####
+
+# String "Atrinkti_klienta_2. "
+.data 0x2000
+"Atri"
+"nkti"
+"_kli"
+"enta"
+"_2. "
+
+# String "Bandomas nr:"
+.data 0x2100
+"Band"
+"omas"
+" nr:"
+
+# String for new line
+.data 0x2200
+0x20200D0A
+
+# String "Atspeta "
+.data 0x2300
+"Atsp"
+"eta "
+
+# Code jump addresses
+.data 0x1000
+0x00000100
+0x00000900
+
+# Constants for algorithm
+.data 0x1014
+0x000004D2
+0x00000EB6
+0x00001356
+0x0000000A
+
+# Constants for array access
+.data 0x1040
+0x00001050
+0x00000004
+0x00000001
+
+# Client array
+.data 0x1050
+0x00000000
+0x00000001
+0x00000000
+0x00000001
+0x00000000
+0x00000000
+0x00000000
+0x00000001
+0x00000000
+0x00000000

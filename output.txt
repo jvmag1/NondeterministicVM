@@ -1,0 +1,28 @@
+Atrinkti_klienta_2.   
+Bandomas nr:2  
+Bandomas nr:9  
+Bandomas nr:5  
+Bandomas nr:4  
+Bandomas nr:5  
+Bandomas nr:2  
+Bandomas nr:8  
+Bandomas nr:6  
+Bandomas nr:6  
+Bandomas nr:3  
+Atspeta 
+*****
+PI aktyvacija.
+
+Produkto nr:311796801
+
+Idiegimo nr:136384785
+Aktyvacijos nr: 896363138
+Tikrinamas nr...
+Tikrinamas nr...
+Numeris patikrintas
+*****
+Vidurkio skaiciavimas.
+
+Skaiciai:   1,   3,   4,   5,   1,   2,   3,   5,
+
+Vidurkis:   3

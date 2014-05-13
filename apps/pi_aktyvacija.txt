@@ -1,0 +1,169 @@
+##### Code section #####
+
+.code 0x0
+# Print "PI aktyacija.  " and a new line
+LoadByMem r0 0x2000 100%
+PrintString r0 100%
+LoadByMem r0 0x2004 100%
+PrintString r0 100%
+LoadByMem r0 0x2008 100%
+PrintString r0 100%
+LoadByMem r0 0x200C 100%
+PrintString r0 100%
+LoadByMem r0 0x2900 100%
+PrintString r0 100%
+
+# Print "Produkto nr:"
+LoadByMem r0 0x2100 100%
+PrintString r0 100%
+LoadByMem r0 0x2104 100%
+PrintString r0 100%
+LoadByMem r0 0x2108 100%
+PrintString r0 100%
+
+# Load product number and print it together with a new line
+LoadByMem r10 0x1100 100%
+PrintNumber r10 100%
+LoadByMem r0 0x2900 100%
+PrintString r0 100%
+
+# Print "Idiegimo nr:"
+LoadByMem r0 0x2200 100%
+PrintString r0 100%
+LoadByMem r0 0x2204 100%
+PrintString r0 100%
+LoadByMem r0 0x2208 100%
+PrintString r0 100%
+
+# Load installation number and print it together with a new line
+LoadByMem r11 0x1104 100%
+PrintNumber r11 100%
+LoadByMem r0 0x2900 100%
+PrintString r0 100%
+
+# Print "Aktyvacijos nr: "
+LoadByMem r0 0x2300 100%
+PrintString r0 100%
+LoadByMem r0 0x2304 100%
+PrintString r0 100%
+LoadByMem r0 0x2308 100%
+PrintString r0 100%
+LoadByMem r0 0x230C 100%
+PrintString r0 100%
+
+# Load activation number and print it together with a new line
+LoadByMem r12 0x1108 100%
+PrintNumber r12 100%
+LoadByMem r0 0x2900 100%
+PrintString r0 100%
+
+# Jump to activation code validation algorithm
+LoadByMem r1 0x1000 100%
+Jump r1 100%
+
+# Activation code validation algorithm
+.code 0x200
+# Print "Tikrinamas nr..."
+LoadByMem r0 0x2400 100%
+PrintString r0 100%
+LoadByMem r0 0x2404 100%
+PrintString r0 100%
+LoadByMem r0 0x2408 100%
+PrintString r0 100%
+LoadByMem r0 0x240C 100%
+PrintString r0 100%
+LoadByMem r0 0x2900 100%
+PrintString r0 100%
+
+# Load constants 17, 2
+LoadByMem r0 0x1200 100%
+LoadByMem r1 0x1204 100%
+
+# The algorithm: r2 = (r10 + r11 - 17) * 2
+Add r2 r10 r11 93%
+Subtract r2 r2 r0 100%
+Subtract r2 r2 r0 8%
+Multiply r2 r2 r1 99%
+
+# if (r2 == r12) { print "Numeris patikrintas " } else { try_again }
+Compare r2 r12 100%
+LoadByMem r3 0x1004 100%
+JumpIfEqual r3 100%
+LoadByMem r0 0x1000 100%
+Jump r0 100%
+
+# Print "Numeris patikrintas "
+.code 0x900
+LoadByMem r0 0x2500 100%
+PrintString r0 100%
+LoadByMem r0 0x2504 100%
+PrintString r0 100%
+LoadByMem r0 0x2508 100%
+PrintString r0 100%
+LoadByMem r0 0x250C 100%
+PrintString r0 100%
+LoadByMem r0 0x2510 100%
+PrintString r0 100%
+
+##### Data section #####
+
+# String "PI aktyvacija.  "
+.data 0x2000
+"PI a"
+"ktyv"
+"acij"
+"a.  "
+
+# String "Produkto nr:"
+.data 0x2100
+"Prod"
+"ukto"
+" nr:"
+
+# String "Idiegimo nr:"
+.data 0x2200
+"Idie"
+"gimo"
+" nr:"
+
+# String "Aktyvacijos nr: "
+.data 0x2300
+"Akty"
+"vaci"
+"jos "
+"nr: "
+
+# String "Tikrinamas nr..."
+.data 0x2400
+"Tikr"
+"inam"
+"as n"
+"r..."
+
+# String "Numeris patikrintas "
+.data 0x2500
+"Nume"
+"ris "
+"pati"
+"krin"
+"tas "
+
+# String for new line
+.data 0x2900
+0x20200D0A
+
+# Code jump addresses
+.data 0x1000
+0x00000200
+0x00000900
+
+# Product, installation and activation numbers
+.data 0x1100
+0x1295A441
+0x08211111
+0x356D6A82
+
+# Constants for algorithm
+.data 0x1200
+0x00000011
+0x00000002
