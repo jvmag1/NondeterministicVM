@@ -22,7 +22,7 @@ namespace NondeterministicVM.BLL
         {
             _cpu.AdvancePC();
 
-            if (instruction.OpCode == OpCodes.LoadByMem || instruction.OpCode == OpCodes.Store)
+            if (instruction.OpCode == OpCodes.LoadByMem || instruction.OpCode == OpCodes.StoreByMem)
             {
                 _cpu.AdvancePC();                
             }
@@ -150,8 +150,12 @@ namespace NondeterministicVM.BLL
                     _cpu.R[instruction.FirstRegister] = Randomize(_cpu.R[instruction.SecondRegister] - _cpu.R[instruction.ThirdRegister]);
                     break;
 
-                case OpCodes.Store:
+                case OpCodes.StoreByMem:
                     _memory.WriteWord(instruction.MemoryAddress, _cpu.R[instruction.FirstRegister]);
+                    break;
+
+                case OpCodes.StoreByReg:
+                    _memory.WriteWord((uint)_cpu.R[instruction.SecondRegister], _cpu.R[instruction.FirstRegister]);
                     break;
 
                 case OpCodes.Subtract:

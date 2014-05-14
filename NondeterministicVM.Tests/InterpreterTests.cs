@@ -255,7 +255,7 @@ namespace NondeterministicVM.Tests
         }
 
         [Test]
-        public void TestStore()
+        public void TestStoreByMem()
         {
             // Arrange
             var cpu = new CPU();
@@ -275,7 +275,7 @@ namespace NondeterministicVM.Tests
                 ExecutionPossibility = 100,
                 FirstRegister = 0,
                 MemoryAddress = 0x87654320,
-                OpCode = OpCodes.Store,
+                OpCode = OpCodes.StoreByMem,
                 SecondRegister = 1,
                 ThirdRegister = 2                
             };

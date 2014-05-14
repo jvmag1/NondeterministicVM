@@ -33,9 +33,10 @@
         // I/O operations
         LoadByMem = 0x40,
         LoadByReg = 0x41,
-        Store = 0x42,
-        PrintString = 0x43,
-        PrintNumber = 0x44,
+        StoreByMem = 0x42,
+        StoreByReg = 0x43,
+        PrintString = 0x44,
+        PrintNumber = 0x45,
 
         // Randomized operations
         RandomizedAdd = 0xA1,
