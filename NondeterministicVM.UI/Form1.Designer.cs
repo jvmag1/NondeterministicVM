@@ -101,7 +101,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(502, 45);
+            this.checkBox1.Location = new System.Drawing.Point(421, 45);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(179, 17);
             this.checkBox1.TabIndex = 2;
@@ -126,9 +126,9 @@
             // button3
             // 
             this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(687, 41);
+            this.button3.Location = new System.Drawing.Point(606, 41);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(156, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Next step";
             this.button3.UseVisualStyleBackColor = true;
@@ -541,6 +541,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Nondeterministic VM";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

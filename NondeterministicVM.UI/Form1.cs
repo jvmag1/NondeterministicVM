@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using NondeterministicVM.BLL;
+using NondeterministicVM.Properties;
 
 namespace NondeterministicVM
 {
@@ -30,14 +31,14 @@ namespace NondeterministicVM
         {
             button3.Enabled = checkBox1.Checked;
 
-            button2.Text = checkBox1.Checked ? "Load" : "Run";
+            button2.Text = checkBox1.Checked ? Resources.Load : Resources.Run;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == "")
             {
-                MessageBox.Show("Please select a file first");
+                MessageBox.Show(Resources.Please_select_a_file_first);
             }
 
             NewVirtualMachine();
@@ -59,8 +60,8 @@ namespace NondeterministicVM
 
             dataGridView1.DataSource = new BindingSource(_memory._dataStore, null);
 
-            dataGridView1.Columns[0].HeaderText = "Address";
-            dataGridView1.Columns[1].HeaderText = "Content";
+            dataGridView1.Columns[0].HeaderText = Resources.Address;
+            dataGridView1.Columns[1].HeaderText = Resources.Content;
 
             textBox18.Text = "";
 
@@ -78,7 +79,7 @@ namespace NondeterministicVM
             }
             catch (VmHaltException)
             {
-                MessageBox.Show("Virtual machine halted execution");
+                MessageBox.Show(Resources.Virtual_machine_halted_execution);
             }
         }
 
@@ -115,7 +116,7 @@ namespace NondeterministicVM
         {
             if (! _fileLoaded)
             {
-                MessageBox.Show("Please load application first");
+                MessageBox.Show(Resources.Please_load_application_first);
 
                 return;
             }
@@ -126,7 +127,7 @@ namespace NondeterministicVM
             }
             catch (VmHaltException)
             {
-                MessageBox.Show("Virtual machine halted execution");
+                MessageBox.Show(Resources.Virtual_machine_halted_execution);
             }            
         }
 
@@ -149,6 +150,21 @@ namespace NondeterministicVM
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Text = Resources.Nondeterministic_VM;
+
+            button1.Text = Resources.Browse;
+            button2.Text = Resources.Run;
+            button3.Text = Resources.Next_step;
+
+            checkBox1.Text = Resources.Execute_commands_step_by_step;
+
+            groupBox1.Text = Resources.Load_CPU_registers;
+            groupBox2.Text = Resources.Output;
+            groupBox3.Text = Resources.Memory;            
         }
     }
 }
