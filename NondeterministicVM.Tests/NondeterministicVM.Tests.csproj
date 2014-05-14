@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="Helpers\ConsoleOutput.cs" />
     <Compile Include="InstructionTests.cs" />
-    <Compile Include="IntegrationTests.cs" />
     <Compile Include="InterpreterTests.cs" />
     <Compile Include="MemoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
