@@ -54,11 +54,13 @@ LoadByReg r5 r3 100%
 
 # Randomly decide to count number to average or not
 Xor r12 r12 r12 100%
-Xor r13 r13 r13 100%
-Increase r12 75%
+LoadByMem r13 0x120C 100%
+# Using randomized memory to get a value with randomly flipped bit
+StoreByMem r12 0xC0000000 100%
+LoadByMem r12 0xC0000000 100%
 Compare r12 r13 100%
 LoadByMem r6 0x1000 100%
-JumpIfEqual r6 100%
+JumpIfGreater r6 100%
 
 # Increase count of summed numbers
 Increase r11 100%
@@ -139,6 +141,7 @@ PrintNumber r12 100%
 0x00000000
 0x00001300
 0x00000004
+0x00100000
 
 # Number count
 .data 0x1300
