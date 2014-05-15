@@ -72,16 +72,16 @@ namespace NondeterministicVM.Tests
             memory.WriteWord(0xC0000008, 789);
 
             // Assert
-            Assert.IsTrue(SevenBitsEqual(123, memory.ReadWord(0xC0000000)));
-            Assert.IsTrue(SevenBitsEqual(456, memory.ReadWord(0xC0000004)));
-            Assert.IsTrue(SevenBitsEqual(789, memory.ReadWord(0xC0000008)));
+            Assert.IsTrue(ThirtyOneBitsEqual(123, memory.ReadWord(0xC0000000)));
+            Assert.IsTrue(ThirtyOneBitsEqual(456, memory.ReadWord(0xC0000004)));
+            Assert.IsTrue(ThirtyOneBitsEqual(789, memory.ReadWord(0xC0000008)));
         }
 
-        private bool SevenBitsEqual(int value1, int value2)
+        private bool ThirtyOneBitsEqual(int value1, int value2)
         {
             int equalBits = 0;
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 32; i++)
             {
                 int bit = 1 << i;
 
@@ -91,7 +91,7 @@ namespace NondeterministicVM.Tests
                 }
             }
 
-            return equalBits == 7;
+            return equalBits == 31;
         }
     }
 }

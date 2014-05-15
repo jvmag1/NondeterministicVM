@@ -49,7 +49,7 @@ namespace NondeterministicVM.BLL
             }
             else
             {
-                var randomBit = _random.Next(0, 7);
+                var randomBit = _random.Next(0, 31);
 
                 _dataStore[address] = word ^ (1 << randomBit);
             }
